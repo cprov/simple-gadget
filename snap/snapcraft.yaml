@@ -1,0 +1,40 @@
+name: simple-gadget
+version: '16.04-0.1'
+type: gadget
+summary: Simple gadget for classic devices
+description: |
+  This gadget enables classic devices to authenticate with Serial Vault.
+grade: stable
+confinement: strict
+
+# This gadget is architecure-independent, only shell hooks
+architectures:
+  - all
+
+parts:
+  prepare-device:
+    plugin: nil
+    override-build: |
+      echo "Building the 'prepare-device' hook ..."
+
+      if [ -z "${MODEL_APIKEY}" ]; then
+        echo "Please define MODEL_APIKEY for building this gadget."
+        exit 1
+      fi
+
+      mkdir -p snap/hooks
+
+      cat << EOF > snap/hooks/prepare-device
+      #!/bin/sh -ux
+      mkdir -p \$SNAP_COMMON
+      exec >> \$SNAP_COMMON/prepare-device-hook.log 2>&1
+      product_serial=\$(date -Is)
+      echo "product_serial:[\$product_serial]"
+      snapctl set registration.proposed-serial="\"\${product_serial}\""
+      snapctl set device-service.url="https://serial-vault-partners.canonical.com/v1/"
+      snapctl set device-service.headers='{"api-key": "${MODEL_APIKEY}"}'
+      EOF
+
+      chmod +x snap/hooks/prepare-device
+      mkdir -p ${SNAPCRAFT_PART_INSTALL}/snap/hooks
+      cp snap/hooks/prepare-device ${SNAPCRAFT_PART_INSTALL}/snap/hooks
