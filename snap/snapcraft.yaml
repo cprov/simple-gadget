@@ -1,0 +1,15 @@
+name: simple-gadget
+version: '1.0'
+type: gadget
+summary: Simple gadget for classic devices
+description: |
+    This gadget enables generic classic devices to authenticate with serial vault
+grade: stable
+confinement: strict
+architectures:
+  - build-on: amd64
+    run-on: armhf
+
+parts:
+  assets:
+    plugin: nil

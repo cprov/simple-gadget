@@ -1,0 +1,8 @@
+#!/bin/sh
+
+snapctl set device-service.url="https://device-service"
+
+snapctl set device-service.headers='{"token": "TOKEN"}'
+
+snapctl set registration.proposed-serial="DEVICE-SERIAL"
+
