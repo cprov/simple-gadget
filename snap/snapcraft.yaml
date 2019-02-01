@@ -8,7 +8,7 @@ grade: stable
 confinement: strict
 architectures:
   - build-on: amd64
-    run-on: armhf
+    run-on: amd64
 
 parts:
   assets:
