@@ -1,0 +1,13 @@
+{
+  "type": "model",
+  "authority-id": "<-- BRAND-ID -->",
+  "brand-id": "<-- BRAND-ID -->",
+  "store": "<-- STORE-ID -->",
+  "series": "16",
+  "architecture": "amd64",
+  "classic": "true",
+  "model": "simple-classic",
+  "gadget": "simple-gadget",
+  "required_snaps": [],
+  "timestamp": "YYYY-MM-DDTHH:mm:SSZ"
+}
