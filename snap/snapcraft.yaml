@@ -9,13 +9,11 @@ confinement: strict
 icon: icon.png
 
 # This gadget is architecure-independent, only shell hooks
-#architectures:
-#  - all
+architectures:
+  - all
 
 parts:
   assets:
     plugin: nil
-    override-build: |
-      cp gadget.yaml ${SNAPCRAFT_PART_INSTALL}
     prime:
       - -*
