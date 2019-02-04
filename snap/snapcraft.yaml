@@ -3,13 +3,19 @@ version: '1.0'
 type: gadget
 summary: Simple gadget for classic devices
 description: |
-    This gadget enables generic classic devices to authenticate with serial vault
+    This gadget enables classic devices to authenticate with serial vault.
 grade: stable
 confinement: strict
-architectures:
-  - build-on: amd64
-    run-on: amd64
+icon: icon.png
+
+# This gadget is architecure-independent, only shell hooks
+#architectures:
+#  - all
 
 parts:
   assets:
     plugin: nil
+    override-build: |
+      cp gadget.yaml ${SNAPCRAFT_PART_INSTALL}
+    prime:
+      - -*
