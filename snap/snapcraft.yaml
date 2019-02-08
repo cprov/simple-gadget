@@ -6,7 +6,6 @@ description: |
   This gadget enables classic devices to authenticate with serial vault.
 grade: stable
 confinement: strict
-icon: icon.png
 
 # This gadget is architecure-independent, only shell hooks
 architectures:
@@ -15,5 +14,3 @@ architectures:
 parts:
   assets:
     plugin: nil
-    prime:
-      - -*

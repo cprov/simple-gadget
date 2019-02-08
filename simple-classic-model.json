@@ -8,6 +8,6 @@
   "classic": "true",
   "model": "simple-classic",
   "gadget": "simple-gadget",
-  "required_snaps": [],
+  "required-snaps": [],
   "timestamp": "YYYY-MM-DDTHH:mm:SSZ"
 }
